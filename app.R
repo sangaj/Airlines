@@ -32,7 +32,7 @@ ui <-
         
         inputId = "FROM",
         label = "Select Departure Airport",
-        choices = c("All","Beijing","Shanghai","Guangzhou","Chengdu","Xiamen","Hangzhou","Shenzheng","Nanjing","Changsha","Qingdao","Wuhan","Xi'an","Kunming"),
+        choices = c("All","Beijing","Shanghai","Guangzhou","Chengdu","Xiamen","Hangzhou","Shenzheng","Nanjing","Changsha","Qingdao","Wuhan","Xi'an","Kunming","Chongqing"),
         selected = "All"
         
       ),
@@ -41,7 +41,7 @@ ui <-
         
         inputId = "TO",
         label = "Select Arrival Airport",
-        choices = c("Amsterdam","Paris","Frankfurt"),
+        choices = c("Amsterdam","Paris","Frankfurt","Madrid","Zurich","Berlin","Dusseldorf","Munich","London","Barcelona","Brussels","Rome","Milan","Stockholm","Copenhagen"),
         selected = "All"
       
     )
@@ -70,7 +70,7 @@ tabPanel("About",
          mainPanel(
            h3("Airlines Status between Mainland China and European Continent"),
            h5("The Figure and Table gives the current airlines status between Chinese Mainland and European Continent. You can get the airlines frequency per week by selecting the departue city in China and arrival city in Europe"),
-           h6("Data only contains top three airports in Europe. It would be extended in the future")
+           h6("Data only contains some airports in Europe. It would be extended in the future")
          ))
 )
 )
@@ -90,7 +90,7 @@ server <- function(input, output, session) {
      lat = subcast$latitude,
      type = "pie",
      data = subcast[, c("Beijing", "Shanghai","others")], 
-     popup = c("Amsterdam Schiphol Airport", "Frankfurt am Main Airport","Paris Charles de Gaulle Airport Airport"),
+     popup = c("Amsterdam Schiphol Airport","Barcelona El Prat Airport", "Berlin Tegel Airport","Brussels Airport","Copenhagen Airport","Dusseldorf Airport","Frankfurt am Main Airport","London Heathrow Airport","Madrid Barajas Airport","Milan Malpensa Airport","Munich Airport","Paris Charles de Gaulle Airport Airport","Rome Fiumicino Airport","Stockholm Arlanda Airport","Zurich Airport"),
      colorPalette = colors, 
      width = 60 * sqrt(subcast$total) / sqrt(max(subcast$total))
    ) %>% 
